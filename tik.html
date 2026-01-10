@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICT Club & Podcast 105</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        nav {
+            background: #1C2E4A;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: #1C2E4A;
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #1C2E4A;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-card h3 {
+            color: #1C2E4A;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #programs {
+            background: #f8f9fa;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .program-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .program-card h3 {
+            color: #1C2E4A;
+            margin-bottom: 15px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: #1C2E4A;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .team-card h3 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .team-role {
+            color: #1C2E4A;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        #gallery {
+            background: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: #1C2E4A;
+            border-radius: 15px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            transition: transform 0.3s;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            color: #1C2E4A;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #1C2E4A;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1C2E4A;
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                🎙️ ICT & Podcast 105
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul id="navMenu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#programs">Program</a></li>
+                <li><a href="#team">Tim Inti</a></li>
+                <li><a href="#gallery">Galeri</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>ICT CLUB 105 and Podcast 105</h1>
+        <p>Coding the Future, Connecting the World.</p>
+        <a href="#contact" class="cta-button">Gabung Sekarang</a>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Ekskul</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>💻 ICT Club 105</h3>
+                    <p>Wadah bagi siswa untuk mengembangkan kemampuan dalam teknologi informasi, pemrograman, desain grafis, video editing, dan berbagai keterampilan digital lainnya.</p>
+                </div>
+                <div class="about-card">
+                    <h3>🎙️ Podcast 105</h3>
+                    <p>Salah satu kegiatan utama di ekskul TIK! Siswa belajar produksi podcast dari nol - mulai dari konsep, recording, editing, hingga publishing. Platform untuk berbagi cerita dan inspirasi.</p>
+                </div>
+                <div class="about-card">
+                    <h3>🌟 Visi Kami</h3>
+                    <p>Menciptakan generasi yang melek teknologi dan mampu menyuarakan ide-ide kreatif mereka dengan percaya diri untuk memberikan dampak positif bagi lingkungan sekitar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs">
+        <div class="container">
+            <h2 class="section-title">Program Kegiatan</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">🖥️</div>
+                    <h3>Web Development</h3>
+                    <p>Belajar membuat website dari nol dengan HTML</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🎨</div>
+                    <h3>Desain Grafis</h3>
+                    <p>Menguasai tools desain canva untuk membuat karya visual yang menarik</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🎬</div>
+                    <h3>Video Editing</h3>
+                    <p>Mengolah dan memotong video, menambah efek atau musik, serta membuat konten yang menarik untuk tugas, media sosial, atau pekerjaan kreatif.</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🎤</div>
+                    <h3>Produksi Podcast</h3>
+                    <p>Dari konsep, recording, hingga publishing podcast berkualitas</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">📱</div>
+                    <h3>Excel</h3>
+                    <p>Mempelajari Excel berguna untuk mengolah data, membuat tabel dan grafik, melatih logika, serta membantu dalam tugas sekolah, pekerjaan, dan kegiatan sehari-hari.</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🤖</div>
+                    <h3>AI & Technology</h3>
+                    <p>Eksplorasi teknologi AI dan aplikasinya di kehidupan sehari-hari</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title">Tim Ekskul TIK</h2>
+            
+            <h3 style="text-align: center; color: #1C2E4A; margin-bottom: 30px; font-size: 1.5rem;">Pembina & Pelatih</h3>
+            <div class="team-grid" style="margin-bottom: 50px;">
+                <div class="team-card">
+                    <div class="team-avatar">👩‍🏫</div>
+                    <h3>Hastuti Moeljono</h3>
+                    <div class="team-role">Pembina Ekskul</div>
+                    <p>Guru pembimbing yang mengawasi dan mengarahkan kegiatan ekskul TIK</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍🏫</div>
+                    <h3>Andi Suhandi</h3>
+                    <div class="team-role">Pelatih Coding & Multimedia</div>
+                    <p>Melatih siswa dalam produksi podcast, video editing, dan multimedia</p>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; color: #1C2E4A; margin-bottom: 30px; font-size: 1.5rem;">Tim Inti Ekskul</h3>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💼</div>
+                    <h3>Rafiif Iklil Musthafa</h3>
+                    <div class="team-role">Ketua</div>
+                    <p>Memimpin dan mengkoordinasi seluruh kegiatan ekskul TIK</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💼</div>
+                    <h3>Faiz Rizki Sibuea</h3>
+                    <div class="team-role">Wakil Ketua</div>
+                    <p>Mendukung ketua dalam menjalankan program kerja</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💼</div>
+                    <h3>Khaylilla ayasha Effendi</h3>
+                    <div class="team-role">Bendahara</div>
+                    <p>Mengelola keuangan dan administrasi keuangan ekskul</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💼</div>
+                    <h3>Almira Jovita</h3>
+                    <div class="team-role">Sekretaris 1</div>
+                    <p>Mengelola administrasi dan dokumentasi kegiatan</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💼</div>
+                    <h3>Kiran Aisyah Maharani</h3>
+                    <div class="team-role">Sekretaris 2</div>
+                    <p>Membantu administrasi dan notulensi rapat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">Galeri Kegiatan</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/thumbnail?id=1yvlNeEuhgQKz6CIumsqcZDIsQwTYnijS&sz=w1000" alt="Kegiatan 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/thumbnail?id=10YTAMkCEYNxjm4T-BFFeu1oRYWmWNic4&sz=w1000" alt="Kegiatan 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/thumbnail?id=11xR1FrpDN0sLCQNfgThlNqZU2XcfDOrh&sz=w1000" alt="Kegiatan 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/thumbnail?id=1IKaBoKLug9KVRcZI6GjnzZ6JqPhJ24Ah&sz=w1000" alt="Kegiatan 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-info">
+                <h3>Tertarik Bergabung?</h3>
+                <p>🎗️ Instagram: @zona.teknologi105</p>
+                <p>📱 WhatsApp: +62 858-5479-0091 (Raflif)</p>
+                <p>📍 Ruang TIK, Lantai 1, Setiap hari Jum'at</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/zona.teknologi105?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" title="Instagram">📷</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ICT Club & Podcast 105. Dibuat oleh anggota ekskul</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
